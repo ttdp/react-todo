@@ -22,13 +22,13 @@ function App() {
 
     let title = "Things to do";
 
-	return (
-		<div className="container">
+    return (
+        <div className="container">
             <div className="row">
                 <TodoList title={title} items={items}></TodoList>
             </div>
         </div>
-	);
+    );
 }
 
 export default App;
