@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import TodoList from "./TodoList";
 
 function App() {
-    let items = [
+    let todos = [
         {
             id: 1,
             text: "Learn Javascript",
@@ -20,12 +20,20 @@ function App() {
         }
     ];
 
+    const [items, setItems] = useState(todos)
+
     let title = "Things to do";
+
+    function addNew(text) {
+        let nextId = items.length + 1
+        let todo = { id: nextId, text: text, completed: false }
+        setItems(todos.concat(todo))
+    }
 
     return (
         <div className="container">
             <div className="row">
-                <TodoList title={title} items={items}></TodoList>
+                <TodoList title={title} items={items} addNew={addNew}></TodoList>
             </div>
         </div>
     );
