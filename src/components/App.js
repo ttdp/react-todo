@@ -1,30 +1,10 @@
 import React, { useState } from "react";
 import { FILTER_ALL } from "../services/filter";
+import { addToList, getAllTodo } from "../services/todo";
 import TodoList from "./TodoList";
 
 function App() {
-    let todos = [
-        {
-            id: 1,
-            text: "Learn Javascript",
-            completed: false
-        },
-        {
-            id: 2,
-            text: "Learn React",
-            completed: false
-        },
-        {
-            id: 3,
-            text: "Build a React App",
-            completed: false
-        },
-        {
-            id: 4,
-            text: "Here we go",
-            completed: true
-        }
-    ];
+    let todos = getAllTodo()
 
     const [items, setItems] = useState(todos)
     const [filter, setFilter] = useState(FILTER_ALL)
@@ -32,9 +12,8 @@ function App() {
     let title = "Things to do";
 
     function addNew(text) {
-        let nextId = items.length + 1
-        let todo = { id: nextId, text: text, completed: false }
-        setItems(todos.concat(todo))
+        let newTodo = addToList(items, { text, completed: false })
+        setItems(newTodo)
     }
 
     return (
