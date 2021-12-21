@@ -14,13 +14,19 @@ function App() {
             completed: false
         },
         {
-            id: 1,
+            id: 3,
             text: "Build a React App",
             completed: false
+        },
+        {
+            id: 4,
+            text: "Here we go",
+            completed: true
         }
     ];
 
     const [items, setItems] = useState(todos)
+    const [filter, setFilter] = useState('all')
 
     let title = "Things to do";
 
@@ -33,7 +39,14 @@ function App() {
     return (
         <div className="container">
             <div className="row">
-                <TodoList title={title} items={items} addNew={addNew}></TodoList>
+                <TodoList
+                    title={title}
+                    items={items}
+                    addNew={addNew}
+                    filter={filter}
+                    changeFilter={e => setFilter(e)}>
+
+                </TodoList>
             </div>
         </div>
     );
