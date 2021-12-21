@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FILTER_ALL } from "../services/filter";
 import TodoList from "./TodoList";
 
 function App() {
@@ -26,7 +27,7 @@ function App() {
     ];
 
     const [items, setItems] = useState(todos)
-    const [filter, setFilter] = useState('all')
+    const [filter, setFilter] = useState(FILTER_ALL)
 
     let title = "Things to do";
 
