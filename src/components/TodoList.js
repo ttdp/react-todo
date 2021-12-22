@@ -5,7 +5,7 @@ import Header from "./Header";
 import TodoItem from "./TodoItem";
 
 function TodoList(props) {
-    const { title, items, addNew, filter, changeFilter } = props;
+    const { title, items, addNew, changeStatus, filter, changeFilter } = props;
     const count = items.length
 
     const filteredList = applyFilter(items, filter)
@@ -15,7 +15,7 @@ function TodoList(props) {
             <Header title={title} addNew={addNew} />
 
             <ul className="list-unstyled">
-                {filteredList.map(item => <TodoItem key={item.id} data={item} />)}
+                {filteredList.map(item => <TodoItem key={item.id} item={item} changeStatus={changeStatus} />)}
             </ul>
 
             <Footer count={count} change={changeFilter}></Footer>

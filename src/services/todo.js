@@ -33,3 +33,17 @@ export function addToList(list, data) {
     let item = Object.assign({id: getNextTodoId()}, data)
     return list.concat([item])
 }
+
+export function getItemById(itemId) {
+    return getAllTodo.find(item => item.id ===itemId)
+}
+
+export function updateStatus(items, itemId, completed) {
+    let index = items.findIndex(item => item.id === itemId)
+    
+    let item = items[index]
+    item.completed = !completed
+
+    items[index] = item
+    return items
+}

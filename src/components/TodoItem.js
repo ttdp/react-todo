@@ -1,13 +1,14 @@
 import React from "react";
+import CheckBox from "./CheckBox";
 
 function TodoItem(props) {
-    const { data } = props;
+    const { item, changeStatus } = props;
 
     return (
         <li className="ui-state-default">
             <div className="checkbox">
                 <label>
-                    <input type="checkbox" value="" /> {data.text}
+                    <CheckBox itemId={item.id} checked={item.completed} changeStatus={changeStatus} />{item.text}
                 </label>
             </div>
         </li>

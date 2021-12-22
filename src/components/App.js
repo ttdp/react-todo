@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FILTER_ALL } from "../services/filter";
-import { addToList, getAllTodo } from "../services/todo";
+import { addToList, getAllTodo, updateStatus } from "../services/todo";
 import TodoList from "./TodoList";
 
 function App() {
@@ -12,8 +12,13 @@ function App() {
     let title = "Things to do";
 
     function addNew(text) {
-        let newTodo = addToList(items, { text, completed: false })
-        setItems(newTodo)
+        let updatedTodo = addToList(items, { text, completed: false })
+        setItems(updatedTodo)
+    }
+
+    function changeStatus(itemId, completed) {
+        let updatedTodo = updateStatus(items, itemId, completed)
+        setItems([...updatedTodo])
     }
 
     return (
@@ -24,6 +29,7 @@ function App() {
                     items={items}
                     addNew={addNew}
                     filter={filter}
+                    changeStatus={changeStatus}
                     changeFilter={e => setFilter(e)}>
 
                 </TodoList>
