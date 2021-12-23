@@ -1,24 +1,19 @@
 import React from "react";
-import { applyFilter } from "../services/filter";
 import Footer from "./Footer";
 import Header from "./Header";
-import TodoItem from "./TodoItem";
+import { applyFilter } from "../services/filter";
+import FilteredList from "./FilteredList";
 
 function TodoList(props) {
     const { title, items, addNew, changeStatus, filter, changeFilter } = props;
     const count = items.length
-
     const filteredList = applyFilter(items, filter)
 
     return (
         <div className="todolist">
             <Header title={title} addNew={addNew} />
-
-            <ul className="list-unstyled">
-                {filteredList.map(item => <TodoItem key={item.id} item={item} changeStatus={changeStatus} />)}
-            </ul>
-
-            <Footer count={count} change={changeFilter}></Footer>
+            <FilteredList items={filteredList} changeStatus={changeStatus} />
+            <Footer count={count} change={changeFilter} />
         </div>
     );
 }

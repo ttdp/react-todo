@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import TodoList from "./TodoList";
 import { FILTER_ALL } from "../services/filter";
 import { addToList, getAllTodo, updateStatus } from "../services/todo";
-import TodoList from "./TodoList";
 
 function App() {
     let todos = getAllTodo()
@@ -31,7 +31,6 @@ function App() {
                     filter={filter}
                     changeStatus={changeStatus}
                     changeFilter={e => setFilter(e)}>
-
                 </TodoList>
             </div>
         </div>

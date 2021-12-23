@@ -9,15 +9,13 @@ function Filter(props) {
 
     return (
         <ul className="filters list-unstyled clearfix">
-            {
-                Object.keys(options).map(key => (
-                    <li key={key}>
-                        <button onClick={() => change(key)} className={getClass(key)}>
-                            {options[key]}
-                        </button>
-                    </li>
-                ))
-            }
+            {Object.keys(options).map(key => (
+                <li key={key}>
+                    <button onClick={() => change(key)} className={getClass(key)}>
+                        {options[key]}
+                    </button>
+                </li>
+            ))}
         </ul>
     )
 }
