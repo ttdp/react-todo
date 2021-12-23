@@ -2,6 +2,14 @@ export const FILTER_ALL = 'all'
 export const FILTER_ACTIVE = 'active'
 export const FILTER_COMPLETED = 'completed'
 
+export function getFilterOptions() {
+    return {
+        [FILTER_ALL]: 'All',
+        [FILTER_ACTIVE]: 'Active',
+        [FILTER_COMPLETED]: 'Completed'
+    }
+}
+
 export function applyFilter(list, filter) {
     switch (filter) {
         case FILTER_COMPLETED:
@@ -13,10 +21,11 @@ export function applyFilter(list, filter) {
     }
 }
 
-export function getFilterOptions() {
-    return {
-        [FILTER_ALL]: 'All',
-        [FILTER_ACTIVE]: 'Active',
-        [FILTER_COMPLETED]: 'Completed'
-    }
+export function search(list, query) {
+    let q = query.trim().toLowerCase()
+    return list.filter((text) => stringIncludes(text.toLowerCase(), q))
+}
+
+function stringIncludes(str, substr) {
+    return str.indexOf(substr) !== -1
 }
