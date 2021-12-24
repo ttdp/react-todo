@@ -3,9 +3,9 @@ import { getFilterOptions } from "../services/filter";
 
 const options = getFilterOptions()
 
-function Filter(props) {
+export default function Filter(props) {
     const { filter, changeFilter } = props
-    const getClass = (key) => (key === filter ? 'selected' : '')
+    const getClass = (key) => (key === filter ? 'selected' : '');
 
     return (
         <ul className="filters list-unstyled clearfix">
@@ -19,5 +19,3 @@ function Filter(props) {
         </ul>
     )
 }
-
-export default Filter

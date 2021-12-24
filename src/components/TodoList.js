@@ -16,7 +16,7 @@ function TodoList(props) {
             <Title title={title} />
             <Header mode={mode} addNew={addNew} query={query} search={search} />
             <FilteredList items={filteredList} changeStatus={changeStatus} />
-            <Footer count={count} changeFilter={changeFilter} mode={mode} changeMode={changeMode} />
+            <Footer count={count} filter={filter} changeFilter={changeFilter} mode={mode} changeMode={changeMode} />
             <Info mode={mode} />
         </div>
     );
