@@ -1,16 +1,13 @@
 import React, { useState } from "react";
 import TodoList from "./TodoList";
-import { FILTER_ALL, search } from "../services/filter";
 import { addToList, getAllTodo, updateStatus } from "../services/todo";
 import { MODE_CREATE } from "../services/mode";
 
 function App() {
     let title = "Things to do";
     let todos = getAllTodo()
-    let query = ""
 
     const [items, setItems] = useState(todos)
-    const [filter, setFilter] = useState(FILTER_ALL)
     const [mode, setMode] = useState(MODE_CREATE)
 
     function addNew(text) {
@@ -18,19 +15,13 @@ function App() {
         setItems(updatedTodo)
     }
 
-    function changeStatus(itemId, completed) {
+    function updateTodo(itemId, completed) {
         let updatedTodo = updateStatus(items, itemId, completed)
         setItems([...updatedTodo])
     }
 
     function changeMode(mode) {
         setMode(mode)
-    }
-
-    function searchQuery(text) {
-        console.log(text);
-        let searchedTodo = search(items, text)
-        setItems(searchedTodo)
     }
 
     return (
@@ -40,13 +31,9 @@ function App() {
                     title={title}
                     items={items}
                     addNew={addNew}
-                    filter={filter}
-                    changeStatus={changeStatus}
-                    changeFilter={e => setFilter(e)}
+                    updateTodo={updateTodo}
                     mode={mode}
                     changeMode={changeMode}
-                    query={query}
-                    search={searchQuery}
                 />
             </div>
         </div>

@@ -21,7 +21,7 @@ export function applyFilter(list, filter) {
     }
 }
 
-export function search(list, query) {
+export function applySearch(list, query) {
     const str = query.trim().toLowerCase()
     return list.filter((item) => item.text.toLowerCase().indexOf(str) !== -1)
 }

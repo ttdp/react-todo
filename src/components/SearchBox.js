@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 
 export default function SearchBox(props) {
-    const { query, search } = props
+    const { query, searchQuery } = props
     const [str, setStr] = useState(query)
 
     function handleSearch(str) {
         setStr(str)
-        search(str)
+        searchQuery(str)
     }
 
     return (
