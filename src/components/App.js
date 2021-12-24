@@ -5,13 +5,13 @@ import { addToList, getAllTodo, updateStatus } from "../services/todo";
 import { MODE_CREATE } from "../services/mode";
 
 function App() {
+    let title = "Things to do";
     let todos = getAllTodo()
+    let query = ""
 
     const [items, setItems] = useState(todos)
     const [filter, setFilter] = useState(FILTER_ALL)
     const [mode, setMode] = useState(MODE_CREATE)
-
-    let title = "Things to do";
 
     function addNew(text) {
         let updatedTodo = addToList(items, { text, completed: false })
@@ -27,6 +27,10 @@ function App() {
         setMode(mode)
     }
 
+    function search(text) {
+        console.log(text);
+    }
+
     return (
         <div className="container">
             <div className="row">
@@ -39,6 +43,8 @@ function App() {
                     changeFilter={e => setFilter(e)}
                     mode={mode}
                     changeMode={changeMode}
+                    query={query}
+                    search={search}
                 />
             </div>
         </div>

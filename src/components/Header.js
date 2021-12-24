@@ -1,15 +1,17 @@
 import React from "react";
+import { MODE_CREATE, MODE_SEARCH } from "../services/mode";
 import InputBox from "./InputBox";
+import SearchBox from "./SearchBox";
 
-function Header(props) {
-    const { title, addNew } = props;
+export default function Header(props) {
+    const { mode, addNew, query, search } = props;
 
-    return (
-        <header>
-            <h1>{title.toUpperCase()}</h1>
-            <InputBox addNew={addNew} />
-        </header>
-    );
+    switch (mode) {
+        case MODE_CREATE:
+            return <InputBox addNew={addNew} />
+        case MODE_SEARCH:
+            return <SearchBox query={query} search={search} />
+        default:
+            return null
+    }
 }
-
-export default Header;

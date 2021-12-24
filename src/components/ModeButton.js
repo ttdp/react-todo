@@ -1,7 +1,7 @@
 import React from "react";
 import { MODE_CREATE, MODE_SEARCH, MODE_NONE } from "../services/mode";
 
-function ModeButton(props) {
+export default function ModeButton(props) {
     const { mode, changeMode } = props
 
     function handleAdd() {
@@ -33,5 +33,3 @@ function ModeButton(props) {
         </div>
     )
 }
-
-export default ModeButton

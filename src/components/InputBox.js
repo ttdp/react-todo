@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { KEY_RETURN } from 'keycode-js';
 
-function InputBox(props) {
+export default function InputBox(props) {
 
     const { addNew } = props
     const [text, setText] = useState("")
@@ -10,7 +10,6 @@ function InputBox(props) {
         if (e.keyCode === KEY_RETURN) {
             let todo = text.trim()
             setText("")
-
             addNew(todo)
         }
     }
@@ -25,5 +24,3 @@ function InputBox(props) {
         </input>
     )
 }
-
-export default InputBox
