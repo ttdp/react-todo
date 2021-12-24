@@ -3,11 +3,9 @@ import { MODE_CREATE, MODE_SEARCH, MODE_NONE } from "../services/mode";
 
 function ModeButton(props) {
     const { mode, changeMode } = props
-    const isCreateMode = () => mode === MODE_CREATE
-    const isSearchMode = () => mode === MODE_SEARCH
 
     function handleAdd() {
-        if (isCreateMode) {
+        if (mode === MODE_CREATE) {
             changeMode(MODE_NONE)
         } else {
             changeMode(MODE_CREATE)
@@ -15,7 +13,7 @@ function ModeButton(props) {
     }
 
     function handleSearch() {
-        if (isSearchMode) {
+        if (mode === MODE_SEARCH) {
             changeMode(MODE_NONE)
         } else {
             changeMode(MODE_SEARCH)
@@ -25,11 +23,11 @@ function ModeButton(props) {
     return (
         <div>
             <a title="Add New"
-                className={'button add ' + (isCreateMode() ? 'selected' : '')}
+                className={'button add ' + (mode === MODE_CREATE ? 'selected' : '')}
                 onClick={handleAdd}
             />
             <a title="Search"
-                className={'button search ' + (isSearchMode() ? 'selected' : '')}
+                className={'button search ' + (mode === MODE_SEARCH ? 'selected' : '')}
                 onClick={handleSearch}
             />
         </div>
