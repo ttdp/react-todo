@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 
 export default function SearchBox(props) {
-    const { query, searchQuery } = props
-    const [str, setStr] = useState(query)
+    const { changeSearch } = props
+    const [query, setQuery] = useState(props.query)
 
-    function handleSearch(str) {
-        setStr(str)
-        searchQuery(str)
+    function handleSearch(value) {
+        setQuery(value)
+        changeSearch(value)
     }
 
     return (
         <input type="text" autoFocus
             className="form-control search"
-            value={str}
-            onChange={e => handleSearch(e.target.value)}
+            value={query}
+            onChange={(e) => handleSearch(e.target.value)}
             placeholder="Search">
         </input>
     )
