@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import TodoList from "./TodoList";
-import { FILTER_ALL } from "../services/filter";
+import { FILTER_ALL, search } from "../services/filter";
 import { addToList, getAllTodo, updateStatus } from "../services/todo";
 import { MODE_CREATE } from "../services/mode";
 
@@ -27,8 +27,10 @@ function App() {
         setMode(mode)
     }
 
-    function search(text) {
+    function searchQuery(text) {
         console.log(text);
+        let searchedTodo = search(items, text)
+        setItems(searchedTodo)
     }
 
     return (
@@ -44,7 +46,7 @@ function App() {
                     mode={mode}
                     changeMode={changeMode}
                     query={query}
-                    search={search}
+                    search={searchQuery}
                 />
             </div>
         </div>
