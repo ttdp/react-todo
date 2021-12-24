@@ -29,7 +29,7 @@ function getNextTodoId() {
     return getAllTodo().length + counter++
 }
 
-export function addToList(list, data) {
+export function addTodo(list, data) {
     let item = Object.assign({id: getNextTodoId()}, data)
     return list.concat([item])
 }
@@ -38,7 +38,7 @@ export function getItemById(itemId) {
     return getAllTodo.find(item => item.id ===itemId)
 }
 
-export function updateStatus(items, itemId, completed) {
+export function updateTodo(items, itemId, completed) {
     let index = items.findIndex(item => item.id === itemId)
     
     let item = items[index]

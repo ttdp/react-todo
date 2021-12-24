@@ -8,7 +8,7 @@ import { FILTER_ALL } from "../services/filter";
 import { applyFilter, applySearch } from "../services/filter";
 
 export default function TodoList(props) {
-    const { title, items, addNew, updateTodo, mode, changeMode } = props;
+    const { title, items, addTodo, updateTodo, mode, changeMode } = props;
     const [count, setCount] = useState(items.length)
     const [query, setQuery] = useState("")
     const [filter, setFilter] = useState(FILTER_ALL)
@@ -31,18 +31,9 @@ export default function TodoList(props) {
     return (
         <div className="todolist">
             <Title title={title} />
-            <Header mode={mode}
-                addNew={addNew}
-                query={query}
-                changeSearch={handleSearch}
-            />
+            <Header mode={mode} query={query} addTodo={addTodo} changeSearch={handleSearch} />
             <FilteredList list={filteredList} updateTodo={updateTodo} />
-            <Footer count={count}
-                mode={mode}
-                filter={filter}
-                changeFilter={handleFilter}
-                changeMode={changeMode}
-            />
+            <Footer mode={mode} count={count} filter={filter} changeFilter={handleFilter} changeMode={changeMode} />
             <Info mode={mode} />
         </div>
     )
