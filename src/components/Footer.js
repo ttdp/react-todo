@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "./Button";
+import ModeButton from "./ModeButton";
 import Filter from "./Filter";
 
 function Footer(props) {
@@ -8,7 +8,7 @@ function Footer(props) {
     return (
         <footer className="clearfix">
             <div className="pull-left buttons">
-                <Button mode={mode} changeMode={changeMode} />
+                <ModeButton mode={mode} changeMode={changeMode} />
             </div>
             <div className="pull-left">
                 {count} items left

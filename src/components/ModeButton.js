@@ -1,7 +1,7 @@
 import React from "react";
 import { MODE_CREATE, MODE_SEARCH, MODE_NONE } from "../services/mode";
 
-function Button(props) {
+function ModeButton(props) {
     const { mode, changeMode } = props
     const isCreateMode = () => mode === MODE_CREATE
     const isSearchMode = () => mode === MODE_SEARCH
@@ -36,4 +36,4 @@ function Button(props) {
     )
 }
 
-export default Button
+export default ModeButton
