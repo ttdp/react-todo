@@ -1,21 +1,22 @@
 import React from "react";
+import Button from "./Button";
 import Filter from "./Filter";
 
 function Footer(props) {
-    const { count, filter, change } = props
+    const { count, filter, changeFilter, mode, changeMode } = props
 
     return (
-        <div className="todo-footer clearfix">
+        <footer className="clearfix">
+            <div className="pull-left buttons">
+                <Button mode={mode} changeMode={changeMode} />
+            </div>
             <div className="pull-left">
-                <strong>
-                    <span className="count-todos">{count}</span>
-                </strong>
-                {' items left'}
+                {count} items left
             </div>
             <div className="pull-right">
-                <Filter filter={filter} change={change}></Filter>
+                <Filter filter={filter} changeFilter={changeFilter} />
             </div>
-        </div>
+        </footer>
     )
 }
 
