@@ -8,22 +8,23 @@ import { FILTER_ALL } from "../services/filter";
 import { applyFilter, applySearch } from "../services/filter";
 
 export default function TodoList(props) {
-    const { title, items, addTodo, updateTodo, mode, changeMode } = props;
-    const [count, setCount] = useState(items.length)
+    const { title, todo, addTodo, updateTodo, mode, changeMode } = props;
+
+    const [count, setCount] = useState(todo.length)
     const [query, setQuery] = useState("")
     const [filter, setFilter] = useState(FILTER_ALL)
-    const [filteredList, setFilteredList] = useState(applyFilter(items, filter))
+    const [filteredList, setFilteredList] = useState(applyFilter(todo, filter))
 
     function handleSearch(value) {
         setQuery(value)
-        let searched = applySearch(applyFilter(items, filter), value)
+        let searched = applySearch(applyFilter(todo, filter), value)
         setFilteredList(searched)
         setCount(searched.length)
     }
 
     function handleFilter(value) {
         setFilter(value)
-        let filtered = applySearch(applyFilter(items, value), query)
+        let filtered = applySearch(applyFilter(todo, value), query)
         setFilteredList(filtered)
         setCount(filtered.length)
     }

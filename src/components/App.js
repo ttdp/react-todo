@@ -6,17 +6,19 @@ import { MODE_CREATE } from "../services/mode";
 function App() {
     let title = "Things to do";
 
-    const [items, setItems] = useState(getAllTodo())
+    const [todo, setTodo] = useState(getAllTodo())
     const [mode, setMode] = useState(MODE_CREATE)
 
     function handleAdd(text) {
-        let updatedTodo = addTodo(items, { text, completed: false })
-        setItems(updatedTodo)
+        console.log(text);
+        let updatedTodo = addTodo(todo, { text, completed: false })
+        console.log(updatedTodo.length);
+        setTodo([...updatedTodo])
     }
 
     function handleUpdate(itemId, completed) {
-        let updatedTodo = updateTodo(items, itemId, completed)
-        setItems([...updatedTodo])
+        let updatedTodo = updateTodo(todo, itemId, completed)
+        setTodo([...updatedTodo])
     }
 
     function changeMode(mode) {
@@ -28,7 +30,7 @@ function App() {
             <div className="row">
                 <TodoList
                     title={title}
-                    items={items}
+                    todo={todo}
                     addTodo={handleAdd}
                     updateTodo={handleUpdate}
                     mode={mode}
