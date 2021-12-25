@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Title from "./Title";
 import Footer from "./Footer";
 import Header from "./Header";
@@ -6,9 +6,11 @@ import FilteredList from "./FilteredList";
 import Info from "./Info";
 import { FILTER_ALL } from "../services/filter";
 import { applyFilter, applySearch } from "../services/filter";
+import { TodoContext } from "./App";
 
 export default function TodoList(props) {
-    const { title, todo, addTodo, updateTodo, mode, changeMode } = props;
+    const { title, addTodo, updateTodo, mode, changeMode } = props;
+    const todo = useContext(TodoContext)
 
     const [count, setCount] = useState(todo.length)
     const [query, setQuery] = useState("")
