@@ -1,9 +1,8 @@
-import React, { useState, createContext } from "react";
+import React, { useState } from "react";
 import TodoList from "./TodoList";
 import { getAllTodo, addTodo, updateTodo } from "../services/todo";
 import { MODE_CREATE } from "../services/mode";
-
-export const TodoContext = createContext()
+import TodoContext from "./TodoContext";
 
 function App() {
     let title = "Things to do";
