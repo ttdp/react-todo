@@ -21,11 +21,7 @@ export function applyFilter(list, filter) {
     }
 }
 
-export function search(list, query) {
-    let q = query.trim().toLowerCase()
-    return list.filter((text) => stringIncludes(text.toLowerCase(), q))
-}
-
-function stringIncludes(str, substr) {
-    return str.indexOf(substr) !== -1
+export function applySearch(list, query) {
+    const str = query.trim().toLowerCase()
+    return list.filter((item) => item.text.toLowerCase().indexOf(str) !== -1)
 }

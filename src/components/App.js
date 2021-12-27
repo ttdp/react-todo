@@ -1,26 +1,25 @@
 import React, { useState } from "react";
 import TodoList from "./TodoList";
-import { FILTER_ALL } from "../services/filter";
-import { addToList, getAllTodo, updateStatus } from "../services/todo";
+import { getAllTodo, addTodo, updateTodo } from "../services/todo";
 import { MODE_CREATE } from "../services/mode";
+import TodoContext from "./TodoContext";
 
 function App() {
-    let todos = getAllTodo()
-
-    const [items, setItems] = useState(todos)
-    const [filter, setFilter] = useState(FILTER_ALL)
-    const [mode, setMode] = useState(MODE_CREATE)
-
     let title = "Things to do";
 
-    function addNew(text) {
-        let updatedTodo = addToList(items, { text, completed: false })
-        setItems(updatedTodo)
+    const [todo, setTodo] = useState(getAllTodo())
+    const [mode, setMode] = useState(MODE_CREATE)
+
+    function handleAdd(text) {
+        console.log(text);
+        let updatedTodo = addTodo(todo, { text, completed: false })
+        console.log(updatedTodo.length);
+        setTodo([...updatedTodo])
     }
 
-    function changeStatus(itemId, completed) {
-        let updatedTodo = updateStatus(items, itemId, completed)
-        setItems([...updatedTodo])
+    function handleUpdate(itemId, completed) {
+        let updatedTodo = updateTodo(todo, itemId, completed)
+        setTodo([...updatedTodo])
     }
 
     function changeMode(mode) {
@@ -28,20 +27,19 @@ function App() {
     }
 
     return (
-        <div className="container">
-            <div className="row">
-                <TodoList
-                    title={title}
-                    items={items}
-                    addNew={addNew}
-                    filter={filter}
-                    changeStatus={changeStatus}
-                    changeFilter={e => setFilter(e)}
-                    mode={mode}
-                    changeMode={changeMode}
-                />
+        <TodoContext.Provider value={todo}>
+            <div className="container">
+                <div className="row">
+                    <TodoList
+                        title={title}
+                        addTodo={handleAdd}
+                        updateTodo={handleUpdate}
+                        mode={mode}
+                        changeMode={changeMode}
+                    />
+                </div>
             </div>
-        </div>
+        </TodoContext.Provider>
     );
 }
 
