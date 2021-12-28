@@ -1,22 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
 import { MODE_CREATE, MODE_SEARCH, MODE_NONE } from "../services/mode";
+import TodoContext from "./TodoContext";
 
 export default function ModeButton(props) {
-    const { mode, changeMode } = props
+    const { mode } = props
+    const value = useContext(TodoContext)
 
     function handleAdd() {
         if (mode === MODE_CREATE) {
-            changeMode(MODE_NONE)
+            value.changeMode(MODE_NONE)
         } else {
-            changeMode(MODE_CREATE)
+            value.changeMode(MODE_CREATE)
         }
     }
 
     function handleSearch() {
         if (mode === MODE_SEARCH) {
-            changeMode(MODE_NONE)
+            value.changeMode(MODE_NONE)
         } else {
-            changeMode(MODE_SEARCH)
+            value.changeMode(MODE_SEARCH)
         }
     }
 

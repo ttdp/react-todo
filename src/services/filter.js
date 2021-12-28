@@ -15,7 +15,6 @@ export function applyFilter(list, filter) {
         case FILTER_COMPLETED:
             return list.filter(item => item.completed === true)
         case FILTER_ACTIVE:
-            console.log(list);
             return list.filter(item => item.completed !== true)
         default:
             return list

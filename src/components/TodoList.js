@@ -11,7 +11,7 @@ import TodoContext from "./TodoContext";
 export default function TodoList(props) {
     const value = useContext(TodoContext)
 
-    const { title, addTodo, updateTodo, mode, changeMode } = props;
+    const { mode } = props;
     const [query, setQuery] = useState("")
     const [filter, setFilter] = useState(FILTER_ALL)
 
@@ -23,12 +23,16 @@ export default function TodoList(props) {
         setFilter(str)
     }
 
+    function doFilter() {
+        return applySearch(applyFilter(value.list, filter), query)
+    }
+
     return (
         <div className="todolist">
-            <Title title={title} />
-            <Header mode={mode} query={query} addTodo={addTodo} changeSearch={handleSearch} />
-            <FilteredList list={applySearch(applyFilter(value.list, filter), query)} updateTodo={updateTodo} />
-            <Footer mode={mode} count={value.list.length} filter={filter} changeFilter={handleFilter} changeMode={changeMode} />
+            <Title />
+            <Header mode={mode} query={query} changeSearch={handleSearch} />
+            <FilteredList list={doFilter()} />
+            <Footer mode={mode} count={value.list.length} filter={filter} changeFilter={handleFilter} />
             <Info mode={mode} />
         </div>
     )

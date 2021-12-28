@@ -5,15 +5,11 @@ import { MODE_CREATE } from "../services/mode";
 import TodoContext from "../components/TodoContext";
 
 function App() {
-    let title = "Things to do";
-
     const [todo, setTodo] = useState(getAllTodo())
     const [mode, setMode] = useState(MODE_CREATE)
 
     function handleAdd(text) {
-        console.log(text);
         let updatedTodo = addTodo(todo, { text, completed: false })
-        console.log(updatedTodo.length);
         setTodo([...updatedTodo])
     }
 
@@ -27,16 +23,10 @@ function App() {
     }
 
     return (
-        <TodoContext.Provider value={{list: todo, updateList: setTodo}}>
+        <TodoContext.Provider value={{ list: todo, updateList: setTodo, updateTodo: handleUpdate, addTodo: handleAdd, changeMode: changeMode }}>
             <div className="container">
                 <div className="row">
-                    <TodoList
-                        title={title}
-                        addTodo={handleAdd}
-                        updateTodo={handleUpdate}
-                        mode={mode}
-                        changeMode={changeMode}
-                    />
+                    <TodoList mode={mode} />
                 </div>
             </div>
         </TodoContext.Provider>

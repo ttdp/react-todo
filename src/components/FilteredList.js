@@ -3,7 +3,7 @@ import TodoItem from "./TodoItem";
 import { MSG_NO_ITEMS } from "../assets/text/en_US";
 
 function FilteredList(props) {
-    const { list, updateTodo } = props
+    const { list } = props
 
     if (list.length === 0) {
         return (
@@ -13,7 +13,7 @@ function FilteredList(props) {
         return (
             <ul className="list-unstyled">
                 {list.map(item => (
-                    <TodoItem key={item.id} item={item} changeStatus={updateTodo} />)
+                    <TodoItem key={item.id} item={item} />)
                 )}
             </ul>
         )

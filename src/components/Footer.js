@@ -3,12 +3,12 @@ import ModeButton from "./ModeButton";
 import Filter from "./Filter";
 
 function Footer(props) {
-    const { count, filter, changeFilter, mode, changeMode } = props
+    const { count, filter, changeFilter, mode } = props
 
     return (
         <footer className="clearfix">
             <div className="pull-left buttons">
-                <ModeButton mode={mode} changeMode={changeMode} />
+                <ModeButton mode={mode} />
             </div>
             <div className="pull-left">
                 {count} items left

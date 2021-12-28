@@ -1,5 +1,6 @@
 import React from "react";
 
-export default function Title(props) {
-    return <h1>{props.title.toUpperCase()}</h1>
+export default function Title() {
+    const title = "Things to do"
+    return <h1>{title.toUpperCase()}</h1>
 }

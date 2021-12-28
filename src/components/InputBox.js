@@ -1,16 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { KEY_RETURN } from 'keycode-js';
+import TodoContext from "./TodoContext";
 
-export default function InputBox(props) {
+export default function InputBox() {
 
-    const { addTodo } = props
     const [text, setText] = useState("")
+    const value = useContext(TodoContext)
 
     function handleKeyUp(e) {
         if (e.keyCode === KEY_RETURN) {
             let item = text.trim()
             setText("")
-            addTodo(item)
+            value.addTodo(item)
         }
     }
 

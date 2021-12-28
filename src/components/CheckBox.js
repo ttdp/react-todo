@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext} from "react";
+import TodoContext from "./TodoContext";
 
 function CheckBox(props) {
-    const { itemId, checked, changeStatus } = props
+    const { itemId, checked } = props
+
+    const value = useContext(TodoContext)
 
     function handleChange(e) {
-        changeStatus(itemId, checked)
+        value.updateTodo(itemId, checked)
     }
 
     return (
