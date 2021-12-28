@@ -8,6 +8,14 @@ function App() {
     const [todo, setTodo] = useState(getAllTodo())
     const [mode, setMode] = useState(MODE_CREATE)
 
+    const value = {
+        list: todo, 
+        updateList: setTodo, 
+        updateTodo: handleUpdate, 
+        addTodo: handleAdd, 
+        changeMode: changeMode
+    }
+
     function handleAdd(text) {
         let updatedTodo = addTodo(todo, { text, completed: false })
         setTodo([...updatedTodo])
@@ -23,7 +31,7 @@ function App() {
     }
 
     return (
-        <TodoContext.Provider value={{ list: todo, updateList: setTodo, updateTodo: handleUpdate, addTodo: handleAdd, changeMode: changeMode }}>
+        <TodoContext.Provider value={value}>
             <div className="container">
                 <div className="row">
                     <TodoList mode={mode} />

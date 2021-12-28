@@ -4,7 +4,8 @@ export default function SearchBox(props) {
     const { changeSearch } = props
     const [query, setQuery] = useState(props.query)
 
-    function handleSearch(value) {
+    function handleSearch(event) {
+        const value = event.target.value
         setQuery(value)
         changeSearch(value)
     }
@@ -13,7 +14,7 @@ export default function SearchBox(props) {
         <input type="text" autoFocus
             className="form-control search"
             value={query}
-            onChange={(e) => handleSearch(e.target.value)}
+            onChange={(e) => handleSearch(e)}
             placeholder="Search">
         </input>
     )
