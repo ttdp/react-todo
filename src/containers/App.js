@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import TodoList from "./TodoList";
+import TodoList from "../components/TodoList";
 import { getAllTodo, addTodo, updateTodo } from "../services/todo";
 import { MODE_CREATE } from "../services/mode";
-import TodoContext from "./TodoContext";
+import TodoContext from "../components/TodoContext";
 
 function App() {
     let title = "Things to do";
@@ -27,7 +27,7 @@ function App() {
     }
 
     return (
-        <TodoContext.Provider value={todo}>
+        <TodoContext.Provider value={{list: todo, updateList: setTodo}}>
             <div className="container">
                 <div className="row">
                     <TodoList
