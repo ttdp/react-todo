@@ -1,11 +1,11 @@
 import React, { useState, useContext } from "react";
 import { KEY_RETURN } from 'keycode-js';
-import TodoContext from "./TodoContext";
+import { Context } from "../containers/Provider";
 
 export default function InputBox() {
 
     const [text, setText] = useState("")
-    const value = useContext(TodoContext)
+    const value = useContext(Context)
 
     function handleKeyUp(e) {
         if (e.keyCode === KEY_RETURN) {

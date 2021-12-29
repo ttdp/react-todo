@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import ModeButton from "./ModeButton";
 import Filter from "./Filter";
+import { Context } from "../containers/Provider";
 
 function Footer(props) {
-    const { count, filter, changeFilter, mode } = props
+    const { count, filter, changeFilter } = props
+    const mode = useContext(Context).mode
 
     return (
         <footer className="clearfix">

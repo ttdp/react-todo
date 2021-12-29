@@ -6,12 +6,11 @@ import FilteredList from "./FilteredList";
 import Info from "./Info";
 import { FILTER_ALL } from "../services/filter";
 import { applyFilter, applySearch } from "../services/filter";
-import TodoContext from "./TodoContext";
+import { Context } from "../containers/Provider";
 
 export default function TodoList(props) {
-    const value = useContext(TodoContext)
+    const value = useContext(Context)
 
-    const { mode } = props;
     const [query, setQuery] = useState("")
     const [filter, setFilter] = useState(FILTER_ALL)
 
@@ -30,10 +29,10 @@ export default function TodoList(props) {
     return (
         <div className="todolist">
             <Title />
-            <Header mode={mode} query={query} changeSearch={handleSearch} />
+            <Header query={query} changeSearch={handleSearch} />
             <FilteredList list={doFilter()} />
-            <Footer mode={mode} count={value.list.length} filter={filter} changeFilter={handleFilter} />
-            <Info mode={mode} />
+            <Footer count={value.list.length} filter={filter} changeFilter={handleFilter} />
+            <Info />
         </div>
     )
 }

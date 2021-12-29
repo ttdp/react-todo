@@ -1,10 +1,10 @@
 import React, { useContext} from "react";
-import TodoContext from "./TodoContext";
+import { Context } from "../containers/Provider";
 
 function CheckBox(props) {
     const { itemId, checked } = props
 
-    const value = useContext(TodoContext)
+    const value = useContext(Context)
 
     function handleChange(e) {
         value.updateTodo(itemId, checked)

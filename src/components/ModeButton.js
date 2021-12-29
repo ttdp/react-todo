@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import { MODE_CREATE, MODE_SEARCH, MODE_NONE } from "../services/mode";
-import TodoContext from "./TodoContext";
+import { Context } from "../containers/Provider";
 
 export default function ModeButton(props) {
     const { mode } = props
-    const value = useContext(TodoContext)
+    const value = useContext(Context)
 
     function handleAdd() {
         if (mode === MODE_CREATE) {
