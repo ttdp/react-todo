@@ -3,7 +3,7 @@ import { getFilterOptions } from "../services/filter";
 
 const options = getFilterOptions()
 
-export default function Filter(props) {
+export default function FilterButton(props) {
     const { filter, changeFilter } = props
     const getClass = (key) => (key === filter ? 'selected' : '');
 

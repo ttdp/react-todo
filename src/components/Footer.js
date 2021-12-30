@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import ModeButton from "./ModeButton";
-import Filter from "./Filter";
+import FilterButton from "./FilterButton";
 import { Context } from "../containers/Provider";
 
 function Footer(props) {
@@ -16,7 +16,7 @@ function Footer(props) {
                 {count} items left
             </div>
             <div className="pull-right">
-                <Filter filter={filter} changeFilter={changeFilter} />
+                <FilterButton filter={filter} changeFilter={changeFilter} />
             </div>
         </footer>
     )
