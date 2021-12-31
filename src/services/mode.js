@@ -13,4 +13,6 @@ export function getModeByKey(current, keyPressed) {
         default:
             if (keyPressed === KEY_ESCAPE) return MODE_NONE
     }
+
+    return current
 }
